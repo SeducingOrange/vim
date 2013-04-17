@@ -1,0 +1,15 @@
+class Fruit(object):
+    def __init__(self, color, taste):
+        self.color = color
+        self.taste = taste
+
+    def eat(self):
+        if self.taste == "bad":
+            print "Yuck"
+        elif self.taste == "good":
+            print "Mmm."
+        else:
+            print "Tastes like " + self.taste
+
+bannana = Fruit("yellow", "bad")
+bannana.eat()

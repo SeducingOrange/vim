@@ -1,0 +1,25 @@
+import os
+
+def inputMethod():
+    a = raw_input("Text file (t) or input it yourself (y)? ")
+    return a
+
+def textFile():
+    os.system("clear")
+    file = open(r'algebra.txt', 'rU')
+    for line in file:
+        print line,
+
+def inputYourself():
+    os.system("clear")
+    print "Worked"
+
+whichOne = inputMethod()
+
+if whichOne == "t":
+    textFile()
+
+elif whichOne == "y":
+    while True:
+        inputYourself()
+

@@ -1,0 +1,305 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <silent> <C-Space> =RopeCodeAssistInsertMode()
+inoremap <buffer> <silent> <Nul> =RopeCodeAssistInsertMode()
+inoremap <buffer> <silent> <S-Tab> =RopeLuckyAssistInsertMode()
+noremap <buffer> <silent> m :emenu Rope . 	
+noremap <buffer> <silent> f :RopeFindOccurrences
+noremap <buffer> <silent> d :RopeShowDoc
+noremap <buffer> <silent> g :RopeGotoDefinition
+nnoremap <buffer> <silent> ,b :call pymode#breakpoint#Set(line('.'))
+vnoremap <buffer> <silent> ,r :Pyrun
+nnoremap <buffer> <silent> ,r :Pyrun
+onoremap <buffer> C :call pymode#motion#select('^\s*class\s', 0)
+vnoremap <buffer> <silent> K :call pymode#doc#Show(@*)
+nnoremap <buffer> <silent> K :call pymode#doc#Show(expand('<cword>'))
+onoremap <buffer> M :call pymode#motion#select('^\s*def\s', 0)
+vnoremap <buffer> [M :call pymode#motion#vmove('^\s*def\s', 'b')
+vnoremap <buffer> [[ :call pymode#motion#vmove('^\(class\|def\)\s', 'b')
+onoremap <buffer> [M :call pymode#motion#move('^\s*def\s', 'b')
+onoremap <buffer> [C :call pymode#motion#move('^\(class\|def\)\s', 'b')
+onoremap <buffer> [[ :call pymode#motion#move('^\(class\|def\)\s', 'b')
+nnoremap <buffer> [M :call pymode#motion#move('^\s*def\s', 'b')
+nnoremap <buffer> [C :call pymode#motion#move('^\(class\|def\)\s', 'b')
+nnoremap <buffer> [[ :call pymode#motion#move('^\(class\|def\)\s', 'b')
+vnoremap <buffer> ]M :call pymode#motion#vmove('^\s*def\s', '')
+vnoremap <buffer> ]] :call pymode#motion#vmove('^\(class\|def\)\s', '')
+onoremap <buffer> ]M :call pymode#motion#move('^\s*def\s', '')
+onoremap <buffer> ]C :call pymode#motion#move('^\(class\|def\)\s', '')
+onoremap <buffer> ]] :call pymode#motion#move('^\(class\|def\)\s', '')
+nnoremap <buffer> ]M :call pymode#motion#move('^\s*def\s', '')
+nnoremap <buffer> ]C :call pymode#motion#move('^\(class\|def\)\s', '')
+nnoremap <buffer> ]] :call pymode#motion#move('^\(class\|def\)\s', '')
+vnoremap <buffer> aM :call pymode#motion#select('^\s*def\s', 0)
+onoremap <buffer> aM :call pymode#motion#select('^\s*def\s', 0)
+vnoremap <buffer> aC :call pymode#motion#select('^\s*class\s', 0)
+onoremap <buffer> aC :call pymode#motion#select('^\s*class\s', 0)
+vnoremap <buffer> iM :call pymode#motion#select('^\s*def\s', 1)
+onoremap <buffer> iM :call pymode#motion#select('^\s*def\s', 1)
+vnoremap <buffer> iC :call pymode#motion#select('^\s*class\s', 1)
+onoremap <buffer> iC :call pymode#motion#select('^\s*class\s', 1)
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=i
+setlocal conceallevel=2
+setlocal completefunc=neocomplcache#auto_complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=pymode#folding#text()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=^\\s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=pymode#indent#Indent(v:lnum)
+setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=pydoc
+setlocal nolinebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal spell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Powerline(1)
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+491,516fold
+518,519fold
+520,521fold
+522,524fold
+525,528fold
+530,575fold
+577,581fold
+583,893fold
+895,911fold
+913,914fold
+915,932fold
+933,936fold
+937,938fold
+939,940fold
+941,944fold
+945,956fold
+958,962fold
+964,965fold
+485,965fold
+970,1120fold
+1121,1177fold
+1178,1196fold
+1197,1222fold
+1223,1457fold
+1458,1485fold
+1486,1578fold
+1579,1680fold
+1681,1753fold
+1754,1814fold
+1815,1854fold
+1855,1897fold
+1898,1915fold
+1916,1934fold
+1935,1964fold
+1965,2013fold
+2014,2018fold
+2019,2092fold
+2093,2117fold
+2118,2130fold
+2131,2198fold
+2199,2208fold
+2209,2215fold
+2216,2409fold
+2410,2435fold
+2436,2492fold
+2493,2542fold
+2543,2560fold
+2561,2578fold
+2579,2657fold
+2658,2754fold
+2755,2823fold
+2824,2910fold
+2911,2922fold
+2923,2931fold
+2932,2937fold
+2938,2985fold
+2986,3066fold
+3067,3076fold
+3077,3107fold
+3108,3228fold
+3229,3257fold
+3258,3282fold
+3283,3303fold
+3304,3322fold
+3323,3364fold
+3365,3378fold
+3379,3413fold
+3414,3448fold
+3449,3485fold
+3486,3520fold
+3521,3531fold
+3532,3543fold
+3544,3552fold
+3553,3575fold
+3576,3601fold
+3602,3651fold
+3652,3659fold
+3660,3695fold
+3696,3896fold
+3897,3901fold
+3902,3916fold
+3917,3971fold
+3972,4013fold
+4014,4055fold
+4056,4108fold
+4109,4188fold
+4189,4206fold
+4207,4218fold
+4219,4257fold
+4258,4401fold
+4402,4428fold
+4429,4447fold
+4448,4483fold
+4484,4518fold
+4519,4590fold
+4591,4826fold
+4827,4893fold
+4894,4914fold
+4915,4935fold
+4936,4943fold
+4944,4968fold
+4969,4982fold
+4983,4996fold
+4997,5023fold
+5024,5211fold
+5212,5234fold
+5235,5338fold
+5339,5366fold
+5367,5374fold
+5375,5400fold
+5401,5412fold
+5413,5432fold
+5433,5453fold
+5454,5473fold
+5474,5511fold
+5512,5548fold
+5549,5570fold
+5571,5588fold
+5589,5602fold
+5603,5616fold
+5617,5629fold
+5630,5642fold
+5643,5655fold
+5656,5670fold
+5671,5698fold
+5699,5735fold
+5736,5790fold
+5791,5812fold
+5813,5828fold
+5829,5930fold
+5931,5942fold
+5943,5972fold
+5973,5981fold
+5982,5994fold
+5995,6003fold
+6004,6019fold
+6020,6034fold
+6035,6039fold
+6040,6082fold
+6083,6098fold
+6099,6106fold
+6107,6124fold
+6125,6132fold
+6133,6147fold
+6148,6157fold
+6158,6167fold
+6168,6176fold
+6177,6184fold
+6185,6214fold
+6215,6228fold
+let s:l = 6700 - ((21 * winheight(0) + 11) / 22)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+6700
+normal! 035l
+lcd ~/Downloads/pywarrior
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :

@@ -1,0 +1,7 @@
+set spell
+set number
+color molokai
+nmap <F6> :SCCompile<cr>
+nmap <F5> :SCCompileRun<cr>
+nnoremap <C-S> :set spell!<cr>
+let g:indent_guides_enable_on_vim_startup = 0
